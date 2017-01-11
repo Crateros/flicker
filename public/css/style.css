@@ -1,4 +1,11 @@
-.container {
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: #45484d;
+  background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%);
+  background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%);
+  background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%);
+
 }
 
 .poster {

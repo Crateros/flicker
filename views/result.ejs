@@ -3,11 +3,24 @@
 
 <% userResults.forEach(function(userResult, index){ %>
   <div class="resultContainer well">
-    <p><%= userResult['Title'] %></p>
-    <p><%= userResult['Genre'] %></p>
-    <p><%= userResult['imdbRating'] %></p>
-    <p><img class="poster" src="<%= userResult['Poster'] %>" alt="Poster"></p>
-    <p><%= userResult['release_year'] %></p>
-    <p><%= userResult['Runtime'] %></p>
+    <div class="row">
+      <div class="col-xs-4">
+        <p><strong>Title:</strong> <%= userResult['Title'] %></p>
+        <p><img class="poster" src="<%= userResult['Poster'] %>" alt="Poster"></p>
+      </div>
+
+      <div class="col-xs-4">
+        <p><strong>Plot Summary:</strong> <%= userResult['Plot'] %></p>
+      </div>
+
+      <div class="col-xs-4">
+        <p><strong>Genre:</strong> <%= userResult['Genre'] %></p>
+        <p><strong>IMDB Rating:</strong> <%= userResult['imdbRating'] %></p>
+        <p><strong>Release Year:</strong> <%= userResult['Year'] %></p>
+        <p><strong>Runtime:</strong> <%= userResult['Runtime'] %></p>
+        <button type="button" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Content</button>
+      </div>
+    </div>
   </div>
 <% }) %>

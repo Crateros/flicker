@@ -5,11 +5,10 @@ var db = require('../models');
 var request = require('request');
 
 var userResults = [];
-// var ids = [];
 var totalInfo = [];
 var funcs = [];
-//Get request details
 
+//Get request details
 function getDetails(id, callback) {
   console.log("THIS IS ID INSIDE OF GET getDetails: ", id);
   var url = 'http://www.omdbapi.com/?i=' + id + '&plot=short&r=json';
@@ -37,7 +36,7 @@ function getDetails(id, callback) {
 // });
 
 
-//POST query from user search input
+//POST query from user search input(async)
 router.post('/', function(req, res) {
   var omdbUrl = 'http://www.omdbapi.com/?s=' + req.body.search + '&y=&plot=short&r=json';
 
@@ -53,10 +52,13 @@ router.post('/', function(req, res) {
     for(var i = 0; i < ids.length; i++) {
       var id = ids[i];
       console.log("THIS IS ID before getDetails ", id);
-      var func = function(callback) {
-        getDetails(id, callback);
-      console.log("THIS IS ID after getDetails ", id);
-      };
+
+      var func = (function(id) {
+        return function(callback) {
+          getDetails(id, callback);
+        }
+      })(id);
+
       funcs.push(func);
     }
 

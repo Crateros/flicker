@@ -1,0 +1,13 @@
+<% include partials/searchbar %>
+  <h3>This is results</h3>
+
+<% userResults.forEach(function(userResult, index){ %>
+  <div class="resultContainer well">
+    <p><%= userResult['Title'] %></p>
+    <p><%= userResult['Genre'] %></p>
+    <p><%= userResult['imdbRating'] %></p>
+    <p><img class="poster" src="<%= userResult['Poster'] %>" alt="Poster"></p>
+    <p><%= userResult['release_year'] %></p>
+    <p><%= userResult['Runtime'] %></p>
+  </div>
+<% }) %>

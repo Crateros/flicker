@@ -49,8 +49,17 @@ app.get('/', function(req, res) {
 
 //This allows isLoggedIn.js to be called during the app.get
 //Profile will show only if user is logged in
-app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile');
+app.get('/user/profile', isLoggedIn, function(req, res) {
+  console.log("REQUEST FOR USER: ", req.user.id);
+  db.user.findOne({
+    where: {id: req.user.id}
+  })
+  .then(function(user) {
+    user.getMovies().then(function(movies) {
+      res.send(movies);
+      // res.render('user/profile', { movies: movies });
+    });
+  });
 });
 
 //Incorporates auth controller

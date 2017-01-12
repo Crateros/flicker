@@ -2,6 +2,7 @@
   <h3>This is results</h3>
 
 <% userResults.forEach(function(userResult, index){ %>
+  <% if(userResult['Type'] === "movie") { %>
   <div class="resultContainer well">
     <div class="row">
       <div class="col-xs-4">
@@ -18,9 +19,22 @@
         <p><strong>IMDB Rating:</strong> <%= userResult['imdbRating'] %></p>
         <p><strong>Release Year:</strong> <%= userResult['Year'] %></p>
         <p><strong>Runtime:</strong> <%= userResult['Runtime'] %></p>
-        <button type="button" class="btn btn-primary">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Content</button>
+
+      <form id="saveMovie" name="saveMovie" action="/media/save" method="POST">
+        <input type="hidden" name="title" value="<%= userResult['Title'] %>"></input>
+        <input type="hidden" name="poster" value="<%= userResult['Poster'] %>"></input>
+        <input type="hidden" name="category" value="<%= userResult['Genre'] %>"></input>
+        <input type="hidden" name="rating" value="<%= userResult['imdbRating'] %>"></input>
+        <input type="hidden" name="date" value="<%= userResult['Year'] %>"></input>
+        <input type="hidden" name="runtime" value="<%= userResult['Runtime'] %>"></input>
+        <button type="submit" class="btn btn-primary saveMovieBtn">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Content
+        </button>
+      </form>
+
       </div>
     </div>
+
   </div>
+  <% } %>
 <% }) %>

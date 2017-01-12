@@ -12,7 +12,7 @@ var funcs = [];
 
 //This gets request details(imdbID) and constructs new url for async request for each id
 function getDetails(id, callback) {
-  console.log("THIS IS ID INSIDE OF GET getDetails: ", id);
+  // console.log("THIS IS ID INSIDE OF GET getDetails: ", id);
   var url = 'http://www.omdbapi.com/?i=' + id + '&plot=short&r=json';
   request(url, function(error, response, body) {
       callback(null, JSON.parse(body));
@@ -32,7 +32,7 @@ router.post('/', function(req, res) {
       return result['imdbID'];
     });
 
-    console.log("THIS IS ids ARRAY", ids);
+    // console.log("THIS IS ids ARRAY", ids);
 
     for(var i = 0; i < ids.length; i++) {
       var id = ids[i];

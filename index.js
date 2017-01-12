@@ -57,29 +57,85 @@ app.get('/user/profile', isLoggedIn, function(req, res) {
   .then(function(user) {
     user.getMovies().then(function(movies) {
       // res.send(movies);
-      console.log("THIS IS MOVIES!!!!!!!!!!!!!!!!!!!: ", movies);
+      // console.log("THIS IS MOVIES!!!!!!!!!!!!!!!!!!!: ", movies);
       res.render('user/profile', { movies: movies });
     });
   });
 });
 
 //DELETE - delete a save movie from current user's
-app.delete("/:title", function(req, res) {
-  db.movie.destroy({
-    where: {title: req.params.title}
-  }).then(function() {
-    res.render('/profile');
-  });
-});
+// app.delete("/:title", function(req, res) {
+//   db.movie.destroy({
+//     where: {title: req.params.title}
+//   }).then(function() {
+//     res.render('/profile');
+//   });
+// });
 
-app.delete('/profile/:id', function(req, res) {
-  console.log("THIS IS DELETE ID: ", req.params.id);
-  db.user.findById(req.user.id).then(function(user) {
-    user.removeMovie(req.params.id).then(function() {
-      res.send({message: 'success destroying'});
+// app.delete('/profile/:id', function(req, res) {
+//   console.log("THIS IS DELETE ID: ", req.params.id);
+//   db.user.findById(req.user.id).then(function(user) {
+//     user.removeMovie(req.params.id).then(function() {
+//       res.send({message: 'success destroying'});
+//     });
+//   });
+// });
+
+// app.get('/delete/:id', function(req, res) {
+//     db.user.find({
+//       where: {email: req.user.email}
+//     },
+//     include: [db.movie]
+//   }).then(function(user) {
+//     db.movie.find({
+//       where: {title: req.params.id}
+//     }).then(function(movie) {
+//       user.removeMovie(movie).then(function(user) {
+//         console.log("updated: ", user.movies);
+//         res.redirect('user/profile');
+//       });
+//     });
+//   });
+// });
+
+
+
+
+
+// DELETE CITY FROM USER_CITIES AND CITIES IF ONLY ASSOCIATION
+app.get('/delete/:id', function(req, res){
+  console.log("THIS IS REQ USER:", req.user)
+  db.user.find({
+    where: {
+      email: req.user.email
+    },
+    include: [db.movie]
+  }).then(function(user) {
+    console.log("THIS IS USER MOVIES !!!:", user.movies);
+    db.movie.find({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(movie) {
+      user.removeMovie(movie).then(function(user) {
+        movie.getUsers().then(function(users) {
+          console.log("ASSOCIATED USERS!!!: ", users);
+          if (users.length === 0) {
+            db.movie.destroy ({
+              where: {id : req.params.id}
+            })
+          }
+        })
+        console.log("updated:", user.movies);
+        res.redirect('/user/profile');
+      });
     });
   });
 });
+
+
+
+
 
 //Incorporates auth controller
 app.use('/auth', require('./controllers/auth'));

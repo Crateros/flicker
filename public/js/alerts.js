@@ -8,6 +8,6 @@ $("#danger-aler").fadeTo(2000, 500).slideUp(500, function(){
 
 $(".saveMovieBtn").click(function() {
     console.log("I was clicked!");
-    $(this .glyphicon).addClass('glyphicon-ok').removeClass('glyphicon-plus');
+    $(this).addClass('glyphicon-ok').removeClass('glyphicon-plus');
     $(this).addClass('btn-success').removeClass('btn-primary');
 });

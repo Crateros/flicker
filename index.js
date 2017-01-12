@@ -56,8 +56,27 @@ app.get('/user/profile', isLoggedIn, function(req, res) {
   })
   .then(function(user) {
     user.getMovies().then(function(movies) {
-      res.send(movies);
-      // res.render('user/profile', { movies: movies });
+      // res.send(movies);
+      console.log("THIS IS MOVIES!!!!!!!!!!!!!!!!!!!: ", movies);
+      res.render('user/profile', { movies: movies });
+    });
+  });
+});
+
+//DELETE - delete a save movie from current user's
+app.delete("/:title", function(req, res) {
+  db.movie.destroy({
+    where: {title: req.params.title}
+  }).then(function() {
+    res.render('/profile');
+  });
+});
+
+app.delete('/profile/:id', function(req, res) {
+  console.log("THIS IS DELETE ID: ", req.params.id);
+  db.user.findById(req.user.id).then(function(user) {
+    user.removeMovie(req.params.id).then(function() {
+      res.send({message: 'success destroying'});
     });
   });
 });

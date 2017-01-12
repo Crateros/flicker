@@ -1,3 +1,21 @@
 <h2>Profile Page</h2>
 
 <p>THIS IS THE PROFILE PAGE!</p>
+<div class="flexboxContainer">
+  <% movies.forEach(function(movie, index) { %>
+    <div class="flexboxChild hvr-float-shadow showHim" style="background-image: url(<%= movie['poster'] %>); height: 300px; width: 200px;">
+      <div class="innerBox showMe hover">
+        <%= movie['title'] %>
+        <hr>
+        <%= movie['rating'] %>
+        <hr>
+        <%= movie['date'] %>
+        <hr>
+        <button id="deleteBtn" type="submit" name="delete" class="btn btn-danger deleteBtn" <a href='/profile/<%= movie.id %>'>Delete</button>
+      </div>
+          <!-- <strong><%= movie['title'] %></strong> -->
+          <!-- <img class="poster" src="<%= movie['poster'] %>" alt="Poster"> -->
+          <!-- <button id="deleteBtn" type="submit" name="delete" class="btn btn-danger deleteBtn" <a href='/profile/<%= movie.id %>'>Delete</button> -->
+    </div>
+  <% }) %>
+</div>

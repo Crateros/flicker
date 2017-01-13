@@ -16,9 +16,9 @@
         <button id="deleteBtn" style="color: black" type="submit" name="delete" class="btn btn-danger deleteBtn"><a class="deleteText" href='/delete/<%= movie.id %>'>Delete</a></button>
         <button id="editBtn" style="color: black" type="submit" name="edit" class="btn btn-warning editBtn"><a class="editText" data-movieId="<%= movie.id %>" href='/edit/<%= movie.id %>'>Watched</a></button>
       </div>
-      <% if (true || currentUser.movies.includes(movie.id)) { %>
+      <!-- <% if (true || currentUser.movies.includes(movie.id)) { %>
         <img id="checkmark" src="/img/watched.png" alt="checkmark" style="height: 180px; width: 120px;">
-      <% } %>
+      <% } %> -->
     </div>
   <% }) %>
 </div>

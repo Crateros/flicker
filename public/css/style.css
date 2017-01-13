@@ -7,7 +7,7 @@ body {
   background: #343d46 !important;
   overflow-y: visible;
   height: 100%;
-
+  margin: 0;
 }
 
 .poster {
@@ -60,6 +60,27 @@ body {
   margin-left: -150px;
 }
 
+#signupText {
+  font-family: "Playball", sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 5em;
+}
+
+#signupForm {
+  font-family: 'Raleway', sans-serif;
+  font-weight: medium;
+  font-size: 1.5em;
+  color: white;
+}
+
+#loginForm {
+  font-family: 'Raleway', sans-serif;
+  font-weight: medium;
+  font-size: 1.5em;
+  color: white;
+}
+
 .userName {
   text-decoration: underline;
 }
@@ -68,6 +89,28 @@ body {
   color: white;
   font-family: "Playball", sans-serif;
   font-weight: bold;
+}
+
+#aboutText {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-top: 80px;
+  line-height: 40px;
+}
+
+#aboutTitle {
+  font-family: "Playball", sans-serif;
+  font-weight: bold;
+  font-size: 3.5em;
+}
+
+#myInfo {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 .flexboxContainer {
@@ -85,7 +128,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 635px;
+  margin-top: 610px;
   background-color: wheat;
 }
 
@@ -169,18 +212,27 @@ body {
   margin-left: 75px;
 }
 
+#checkmark {
+  visibility: visible;
+  position: absolute;
+  top: 40px;
+  left: 55px;
+  z-index: -1;
+  opacity: 0.85;
+}
+
 #node {
-  height: 80px;
+  height: 55px;
   width: 100px;
 }
 
 #heroku {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 90px;
 }
 
 #express {
-  height: 30px;
+  height: 20x;
   width: 100px;
 }
 
@@ -267,6 +319,7 @@ body {
 /*<-------------------Custom navbar styling -------------------->*/
 #wrapper {
     padding-left: 0;
+    min-height: 100%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;

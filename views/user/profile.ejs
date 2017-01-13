@@ -3,6 +3,9 @@
   <span class="fancyMovie">Movies</span>
 </span>
 
+<p style="color: white;"><%= currentUser.movies %></p>
+
+
 <div class="flexboxContainer">
   <% movies.forEach(function(movie, index) { %>
     <div class="flexboxChild hvr-float-shadow showHim" style="background-image: url(<%= movie['poster'] %>); height: 300px; width: 200px;">
@@ -13,9 +16,9 @@
         <button id="deleteBtn" style="color: black" type="submit" name="delete" class="btn btn-danger deleteBtn"><a class="deleteText" href='/delete/<%= movie.id %>'>Delete</a></button>
         <button id="editBtn" style="color: black" type="submit" name="edit" class="btn btn-warning editBtn"><a class="editText" data-movieId="<%= movie.id %>" href='/edit/<%= movie.id %>'>Watched</a></button>
       </div>
-          <!-- <strong><%= movie['title'] %></strong> -->
-          <!-- <img class="poster" src="<%= movie['poster'] %>" alt="Poster"> -->
-          <!-- <button <a href='/profile/<%= movie.id %>'>Delete</button> -->
+      <% if (true || currentUser.movies.includes(movie.id)) { %>
+        <img id="checkmark" src="/img/watched.png" alt="checkmark" style="height: 180px; width: 120px;">
+      <% } %>
     </div>
   <% }) %>
 </div>

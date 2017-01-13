@@ -40,7 +40,22 @@ app.use(function(req, res, next) {
   //This makes current user info available in templates
   res.locals.currentUser = req.user;
   res.locals.alerts = req.flash();
-  next();
+  if (req.user !== undefined) {
+    req.user.getMovies().then(function(movies) {
+      // console.log("REQ.USER.MOVIES:", movies)
+      movies = movies.filter(function(movie) {
+          console.log("THIS IS MOVIE ID!!!!!!!!!!!!!!!!!", movie.id, movie.watched);
+        return movie.watched;
+
+      }).map(function(movie) {
+        return movie.id;
+      })
+      req.user.movies = movies;
+      next();
+    });
+  } else {
+    next();
+  }
 });
 
 function toTitleCase(str)
@@ -50,6 +65,10 @@ function toTitleCase(str)
 
 app.get('/', function(req, res) {
   res.render('index');
+});
+
+app.get('/about', function(req, res) {
+  res.render('about');
 });
 
 //This allows isLoggedIn.js to be called during the app.get
@@ -123,8 +142,8 @@ app.get('/edit/:id', function(req, res){
             movieId: userMovie.id
           }
         }
-      ).then(function(user) {
-        console.log("updated:", user.movies);
+      ).then(function(result) {
+        console.log("EDITED RESULT should be 1!!!!!!!!!!!:", result[0]);
         res.redirect('/user/profile');
       });
     });

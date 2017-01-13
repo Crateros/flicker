@@ -24,14 +24,15 @@ body {
 }
 
 #search {
-  width: 75px;
+  width: 125px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 20px;
     background-color: white;
+    font-family: 'Raleway', sans-serif;
 }
 
 #search:focus {
@@ -40,6 +41,15 @@ body {
 
 #searchBox {
   margin-bottom: 15px;
+}
+
+#searchBtn {
+  margin-top: 10px;
+  display: block;
+  background-color: firebrick;
+  font-weight: bolder;
+  font-size: 20px;
+  color: white;
 }
 
 .searchText {
@@ -66,7 +76,6 @@ body {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
-  overflow-y: scroll;
   height: 630px;
 }
 
@@ -147,6 +156,10 @@ body {
 
 #editBtn {
   color: #ffeb3b !important;
+}
+
+#facebookLogin{
+  margin-top: 5px;
 }
 
 #omdbLogo {

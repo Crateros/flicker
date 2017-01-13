@@ -2,7 +2,8 @@
 module.exports = function(sequelize, DataTypes) {
   var users_movies = sequelize.define('users_movies', {
     userId: DataTypes.INTEGER,
-    movieId: DataTypes.INTEGER
+    movieId: DataTypes.INTEGER,
+    watched: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

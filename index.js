@@ -48,7 +48,6 @@ function toTitleCase(str)
     return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
-
 app.get('/', function(req, res) {
   res.render('index');
 });
@@ -69,8 +68,6 @@ app.get('/user/profile', isLoggedIn, function(req, res) {
     });
   });
 });
-
-
 
 // Delete movie from user and delete movie from movie database if no assocation exists
 app.get('/delete/:id', function(req, res){
@@ -103,64 +100,36 @@ app.get('/delete/:id', function(req, res){
   });
 });
 
+// Update wacthed status for user movie
+app.get('/edit/:id', function(req, res){
+  console.log("THIS IS REQ USER FOR EDIT!!!!!!!!!!!:", req.user.id)
 
+  db.user.find({
+    where: { id: req.user.id },
+    include: [db.movie]
 
-// // PROTOTYPE UPDATE FUNCTION
-// app.get('/edit/:id', function(req, res){
-//   console.log("THIS IS REQ USER FOR EDIT!!!!!!!!!!!:", req.user.id)
-//
-//   db.user.find({
-//     where: { id: req.user.id },
-//     include: [db.movie]
-//   })
-//
-//   .then(function(user) {
-//     console.log("THIS IS USER MOVIES !!!:", req.params.id);
-//     db.movie.find({
-//       where: { id: req.params.id }
-//
-//     })
-//       .then(function(userMovie) {
-//       console.log("UserMovie ID!!!: ", userMovie.id);
-//       db.users_movies.update({
-//         watched: true,
-//         where: {
-//           userId: user.id,
-//           movieId: userMovie.id }
-//       })
-//     .then(function(user) {
-//         console.log("updated:", user.movies);
-//         res.redirect('/user/profile');
-//       });
-//   });
-// });
+  }).then(function(user) {
+    console.log("THIS IS USER MOVIES !!!:", req.params.id);
+    db.movie.find({
+      where: { id: req.params.id }
 
-
-
-
-//PUT edit existing movie to display as watched
-// app.get("/edit/:id", function(req, res){
-//   db.article.findById(req.params.id).then(function(article){
-//   res.render("articles/edit", {article: article});
-//   });
-// });
-//
-// app.put("/article/:id", function(req, res){
-//   var articleToUpdate = req.params.id;
-//   db.article.update({
-//      title: req.body.title,
-//      content: req.body.content
-//    }, {
-//      where: { id: articleToUpdate }
-//   }).then(function(){
-//   res.send();
-//   });
-// });
-
-
-
-
-
+    }).then(function(userMovie) {
+      console.log("UserMovie ID!!!: ", userMovie.id);
+      db.users_movies.update(
+        { watched: true},
+        {
+          where: {
+            userId: user.id,
+            movieId: userMovie.id
+          }
+        }
+      ).then(function(user) {
+        console.log("updated:", user.movies);
+        res.redirect('/user/profile');
+      });
+    });
+  });
+});
 
 //Incorporates auth controller
 app.use('/auth', require('./controllers/auth'));

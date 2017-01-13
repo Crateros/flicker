@@ -8,7 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Oswald|Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" type="img/png" href="/img/moviefav.png">
     <title>Flicker</title>
 
     <!-- Bootstrap -->
@@ -30,7 +33,7 @@
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
           <li class="sidebar-brand">
-            <p>Flicker</p>
+            <p id="siteTitle">Flicker</p>
           </li>
           <li>
             <a href="/" >Search</a>
@@ -66,7 +69,7 @@
                 <div class="alerter">
                   <% include partials/alerts %>
                 </div>
-                <a href="#menu-toggle" class="btn btn-default glyphicon glyphicon-menu-hamburger" id="menu-toggle"></a>
+                <a href="#menu-toggle" class="btn btn-default glyphicon glyphicon-menu-hamburger" id="menu-toggle"><span id="menuText">Menu</span></a>
                 <div class="body-container">
                   <%- body %>
                 </div>

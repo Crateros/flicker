@@ -43,6 +43,12 @@ app.use(function(req, res, next) {
   next();
 });
 
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+
 app.get('/', function(req, res) {
   res.render('index');
 });
@@ -58,7 +64,8 @@ app.get('/user/profile', isLoggedIn, function(req, res) {
     user.getMovies().then(function(movies) {
       // res.send(movies);
       // console.log("THIS IS MOVIES!!!!!!!!!!!!!!!!!!!: ", movies);
-      res.render('user/profile', { movies: movies });
+      user.name = toTitleCase(user.name);
+      res.render('user/profile', { movies: movies, user: user });
     });
   });
 });

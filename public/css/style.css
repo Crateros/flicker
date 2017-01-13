@@ -6,6 +6,7 @@
 body {
   background: #343d46 !important;
   overflow-y: visible;
+  height: 100%;
 
 }
 
@@ -20,6 +21,25 @@ body {
   font-family: "Playball", sans-serif;
   font-weight: bold;
   font-size: 5em;
+}
+
+#search {
+  width: 75px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+
+#search:focus {
+  width: 30%;
+}
+
+#searchBox {
+  margin-bottom: 15px;
 }
 
 .searchText {
@@ -50,7 +70,6 @@ body {
   height: 630px;
 }
 
-
 .flexboxFooter {
   display: flex;
   flex-direction: row;
@@ -72,8 +91,8 @@ body {
 .divider-heroku {
   width: 1px;
   height: 60px;
-  margin-right: 10px;
-  margin-left: 2px;
+  margin-right: -7px;
+  margin-left: 10px;
   color: black;
   border: 1px solid black;
 }
@@ -86,9 +105,15 @@ body {
   margin-right: 15px;
 }
 
+.resultContainer {
+  font-family: 'Raleway', sans-serif;
+  font-weight: medium;
+  font-size: 1.5em;
+  height: 400px;
+}
+
 .totalResults {
   height: 630px;
-  overflow-y: scroll;
   border-radius: 5px;
 }
 
@@ -157,12 +182,7 @@ body {
   text-decoration: none !important;
 }
 
-
-
-
-
-
-/* Let's get this party started */
+/* ------------------------ Scrollbar styling ---------------------*/
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -184,11 +204,7 @@ body {
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(255,0,0,0.4);
 }
-
-
-
-
-
+/* ------------------------ Scrollbar styling ---------------------*/
 
 /* <-----------------------Float Shadow---------------------------> */
 .hvr-float-shadow {
@@ -234,7 +250,6 @@ body {
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 /* <-----------------------Float Shadow---------------------------> */
-
 
 /*<-------------------Custom navbar styling -------------------->*/
 #wrapper {
@@ -285,7 +300,7 @@ body {
   margin: 15px 0 5px 0;
   font-family: 'Graphite';
   font-weight: 500;
-  color: white;
+  color: black;
 }
 
 #wrapper.toggled #sidebar-wrapper {

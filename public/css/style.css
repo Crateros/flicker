@@ -63,8 +63,17 @@ body {
 
 .divider {
   width: 1px;
-  height: 10px;
-  margin: 0 6px;
+  height: 60px;
+  margin: 0 10px;
+  color: black;
+  border: 1px solid black;
+}
+
+.divider-heroku {
+  width: 1px;
+  height: 60px;
+  margin-right: 10px;
+  margin-left: 2px;
   color: black;
   border: 1px solid black;
 }
@@ -73,6 +82,8 @@ body {
   color: black;
   font-family: "Playball", sans-serif;
   font-weight: bold;
+  font-size: 2.5em;
+  margin-right: 15px;
 }
 
 .totalResults {

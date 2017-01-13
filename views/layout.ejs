@@ -57,6 +57,8 @@
             <a href="#">About</a>
           </li>
         </ul>
+        <a href="#menu-toggle" class="btn btn-default glyphicon glyphicon-menu-hamburger" id="menu-toggle"><span id="menuText">Menu</span></a>
+        <img id="omdbLogo" src="/img/omdb.png" alt="omdb logo">
       </div>
       <!-- /#sidebar-wrapper -->
 
@@ -69,7 +71,6 @@
                 <div class="alerter">
                   <% include partials/alerts %>
                 </div>
-                <a href="#menu-toggle" class="btn btn-default glyphicon glyphicon-menu-hamburger" id="menu-toggle"><span id="menuText">Menu</span></a>
                 <div class="body-container">
                   <%- body %>
                 </div>
@@ -97,5 +98,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   </body>
+
+  <footer>
+    <div class="flexboxFooter">
+      <p class="footerText">Powered By:</p>
+      <img id="express" src="/img/express.png" alt="Express Logo">
+      <div class="divider"></div>
+      <img id="node" src="/img/nodelogo.png" alt="Node Logo">
+      <div class="divider"></div>
+      <img id="heroku" src="/img/heroku.png" alt="Heroku Logo">
+    </div>
+  </footer>
 
 </html>

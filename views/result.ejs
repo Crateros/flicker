@@ -1,39 +1,40 @@
 <% include partials/searchbar %>
+<div class="totalResults">
+  <% userResults.forEach(function(userResult, index){ %>
+    <% if(userResult['Type'] === "movie") { %>
+    <div class="resultContainer well">
+      <div class="row">
+        <div class="col-xs-4">
+          <p><strong>Title:</strong> <%= userResult['Title'] %></p>
+          <p><img class="poster" src="<%= userResult['Poster'] %>" alt="Poster"></p>
+        </div>
 
-<% userResults.forEach(function(userResult, index){ %>
-  <% if(userResult['Type'] === "movie") { %>
-  <div class="resultContainer well">
-    <div class="row">
-      <div class="col-xs-4">
-        <p><strong>Title:</strong> <%= userResult['Title'] %></p>
-        <p><img class="poster" src="<%= userResult['Poster'] %>" alt="Poster"></p>
+        <div class="col-xs-4">
+          <p><strong>Plot Summary:</strong> <%= userResult['Plot'] %></p>
+        </div>
+
+        <div class="col-xs-4">
+          <p><strong>Genre:</strong> <%= userResult['Genre'] %></p>
+          <p><strong>IMDB Rating:</strong> <%= userResult['imdbRating'] %></p>
+          <p><strong>Release Year:</strong> <%= userResult['Year'] %></p>
+          <p><strong>Runtime:</strong> <%= userResult['Runtime'] %></p>
+
+        <form id="saveMovie" name="saveMovie" action="/media/save" method="POST">
+          <input type="hidden" name="title" value="<%= userResult['Title'] %>"></input>
+          <input type="hidden" name="poster" value="<%= userResult['Poster'] %>"></input>
+          <input type="hidden" name="category" value="<%= userResult['Genre'] %>"></input>
+          <input type="hidden" name="rating" value="<%= userResult['imdbRating'] %>"></input>
+          <input type="hidden" name="date" value="<%= userResult['Year'] %>"></input>
+          <input type="hidden" name="runtime" value="<%= userResult['Runtime'] %>"></input>
+          <button type="submit" class="btn btn-primary saveMovieBtn">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Content
+          </button>
+        </form>
+
+        </div>
       </div>
 
-      <div class="col-xs-4">
-        <p><strong>Plot Summary:</strong> <%= userResult['Plot'] %></p>
-      </div>
-
-      <div class="col-xs-4">
-        <p><strong>Genre:</strong> <%= userResult['Genre'] %></p>
-        <p><strong>IMDB Rating:</strong> <%= userResult['imdbRating'] %></p>
-        <p><strong>Release Year:</strong> <%= userResult['Year'] %></p>
-        <p><strong>Runtime:</strong> <%= userResult['Runtime'] %></p>
-
-      <form id="saveMovie" name="saveMovie" action="/media/save" method="POST">
-        <input type="hidden" name="title" value="<%= userResult['Title'] %>"></input>
-        <input type="hidden" name="poster" value="<%= userResult['Poster'] %>"></input>
-        <input type="hidden" name="category" value="<%= userResult['Genre'] %>"></input>
-        <input type="hidden" name="rating" value="<%= userResult['imdbRating'] %>"></input>
-        <input type="hidden" name="date" value="<%= userResult['Year'] %>"></input>
-        <input type="hidden" name="runtime" value="<%= userResult['Runtime'] %>"></input>
-        <button type="submit" class="btn btn-primary saveMovieBtn">
-          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Content
-        </button>
-      </form>
-
-      </div>
     </div>
-
-  </div>
-  <% } %>
-<% }) %>
+    <% } %>
+  <% }) %>
+</div>

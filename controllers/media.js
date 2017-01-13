@@ -22,13 +22,15 @@ function getDetails(id, callback) {
 //POST query from user search input(async)
 router.post('/', function(req, res) {
   console.log("THIS IS QUERY: ", req.body.search);
+  var ids = [];
   funcs = [];
   var omdbUrl = 'http://www.omdbapi.com/?s=' + req.body.search + '&y=&plot=short&r=json';
 
   request(omdbUrl, function(error, response, body) {
     userResults = JSON.parse(body).Search;
 
-    var ids = userResults.map(function(result) {
+
+    ids = userResults.map(function(result) {
       return result['imdbID'];
     });
 
@@ -74,10 +76,11 @@ router.post('/save', isLoggedIn, function(req, res, next) {
     //Joins legit user and created movie entry
   }).spread(function(movie, created) {
     user.addMovie(movie);
-    req.flash('success', 'Movie added');
+    console.log("MOVIE LOOK AT ME: ", movie.title);
+    req.flash('success', movie.title + ' added to your profile');
   });
     console.log("movie added!", req.body.title);
-    req.flash('success', 'Movie added');
+    req.flash('success', req.body.title + ' added to your profile');
     res.redirect('/');
   });
 });

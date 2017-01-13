@@ -1,4 +1,7 @@
-<p><%= user.name %>'s Movies</p>
+<span class="profileText">
+  <span class="userName"><%= user.name %>'s</span>
+  <span class="fancyMovie">Movies</span>
+</span>
 
 <div class="flexboxContainer">
   <% movies.forEach(function(movie, index) { %>
@@ -8,7 +11,7 @@
         <p>imdb: <%= movie['rating'] %></p>
         <p><%= movie['date'] %></p>
         <button id="deleteBtn" style="color: black" type="submit" name="delete" class="btn btn-danger deleteBtn"><a class="deleteText" href='/delete/<%= movie.id %>'>Delete</a></button>
-        <button id="editBtn" style="color: black" type="submit" name="edit" class="btn btn-warning editBtn"><a class="editText" href='/edit/<%= movie.id %>'>Watched</a></button>
+        <button id="editBtn" style="color: black" type="submit" name="edit" class="btn btn-warning editBtn"><a class="editText" data-movieId="<%= movie.id %>" href='/edit/<%= movie.id %>'>Watched</a></button>
       </div>
           <!-- <strong><%= movie['title'] %></strong> -->
           <!-- <img class="poster" src="<%= movie['poster'] %>" alt="Poster"> -->

@@ -4,12 +4,7 @@
 }
 
 body {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background: #45484d;
-  background: -moz-radial-gradient(center, ellipse cover,  #45484d 0%, #000000 100%);
-  background: -webkit-radial-gradient(center, ellipse cover,  #45484d 0%,#000000 100%);
-  background: radial-gradient(ellipse at center,  #45484d 0%,#000000 100%);
+  background: #343d46 !important;
   overflow-x: hidden;
 
 }
@@ -20,13 +15,38 @@ body {
   border-radius: 10px;
 }
 
+.profileText {
+  color: firebrick;
+  font-family: "Playball", sans-serif;
+  font-weight: bold;
+  font-size: 5em;
+}
+
+.searchText {
+  font-family: "Playball", sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 5em;
+}
+
+.userName {
+  text-decoration: underline;
+}
+
+.fancyMovie {
+  color: white;
+  font-family: "Playball", sans-serif;
+  font-weight: bold;
+}
+
 .flexboxContainer {
-  background-colorS: rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: scroll;
+  height: 630px;
 }
 
 .flexboxChild {
@@ -70,6 +90,39 @@ body {
   color: black !important;
   text-decoration: none !important;
 }
+
+
+
+
+
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(178,34,34,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255,0,0,0.4);
+}
+
+
+
+
+
 
 /* <-----------------------Float Shadow---------------------------> */
 .hvr-float-shadow {
@@ -149,7 +202,7 @@ body {
 }
 
 #menu-toggle {
-  right: 220px;
+  right: 370px;
   top: 250px;
   width: 75px;
   z-index: 10001;

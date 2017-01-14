@@ -28,12 +28,14 @@ router.post('/', function(req, res) {
 
   request(omdbUrl, function(error, response, body) {
     userResults = JSON.parse(body).Search;
+    console.log("LOOK AT ME: ", userResults);
 
+    if (userResults != undefined) {
 
-    ids = userResults.map(function(result) {
-      return result['imdbID'];
-    });
-
+      ids = userResults.map(function(result) {
+        return result['imdbID'];
+      });
+  }
     // console.log("THIS IS ids ARRAY", ids);
 
     for(var i = 0; i < ids.length; i++) {
